@@ -1,0 +1,29 @@
+/* Navbar.module.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2a69ac;
+  color: white;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.light-mode .navbar {
+  background-color: #ffffff;
+  color: #2a69ac;
+}
+
+.logo {
+  margin-right: 1rem;
+}
+
+.search {
+  flex: 0 0 50%;
+  margin: 0 1rem;
+}
