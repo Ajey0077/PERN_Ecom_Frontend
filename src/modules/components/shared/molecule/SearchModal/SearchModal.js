@@ -39,7 +39,7 @@ function SearchModal({
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       fetchData(inputValue);
-    }, 1000);
+    }, 500);
     return () => clearTimeout(timeoutId);
   }, [inputValue]);
 
