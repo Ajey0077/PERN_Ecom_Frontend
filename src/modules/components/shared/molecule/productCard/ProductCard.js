@@ -19,7 +19,7 @@ function truncateText(text, maxLength) {
   return text;
 }
 
-function ProductCard({ data, customContainerStyle }) {
+function ProductCard({ data, customContainerStyle, handleCardClick }) {
   return (
     <Card
       w="100%"
@@ -29,6 +29,7 @@ function ProductCard({ data, customContainerStyle }) {
         ...customContainerStyle,
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
       }}
+      onClick={() => handleCardClick(data?.id)}
     >
       <Image
         src={data?.images[0]}

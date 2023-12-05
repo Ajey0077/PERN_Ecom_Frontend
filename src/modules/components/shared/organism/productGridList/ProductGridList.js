@@ -10,7 +10,12 @@ import {
 } from '@chakra-ui/react';
 import ProductCard from '../../molecule/productCard/ProductCard';
 
-function ProductGridList({ isLoading, list, customContainerStyle }) {
+function ProductGridList({
+  isLoading,
+  list,
+  customContainerStyle,
+  handleCardClick,
+}) {
   const renderLoadingSkeletons = () =>
     Array.from({ length: 12 }, (_, index) => (
       <GridItem key={index} w="100%">
@@ -24,7 +29,7 @@ function ProductGridList({ isLoading, list, customContainerStyle }) {
   const renderProductCards = () =>
     list?.map((item, index) => (
       <GridItem key={index} w="100%">
-        <ProductCard data={item} />
+        <ProductCard data={item} handleCardClick={handleCardClick} />
       </GridItem>
     ));
 

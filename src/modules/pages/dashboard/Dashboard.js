@@ -1,43 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts } from './dashboardService';
 import ProductGridList from '../../components/shared/organism/productGridList/ProductGridList';
 import PaginationBar from '../../components/shared/molecule/PaginationBar/PaginationBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPage } from '../../../store/modules/dashboard/dashboardSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
-  const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPageCount, setTotalPageCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { products, currentPage, totalPageCount, isLoading } = useSelector(
+    state => {
+      return state.dashboard;
+    }
+  );
 
-  console.log('dashboard');
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getProducts(currentPage);
-        setProducts(data?.products);
-        setTotalPageCount(data?.totalPages);
-      } catch (err) {
-        console.log('Error while Fetching Products: ', err);
-      } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
-      }
-    };
-
-    fetchData();
-  }, [currentPage]);
+    dispatch({
+      type: 'dashboard/fetchProducts',
+      payload: { page: currentPage },
+    });
+  }, [currentPage, dispatch]);
 
   const handlePageChange = page => {
     if (page > 0) {
-      setCurrentPage(page);
+      dispatch(setCurrentPage(page));
+    }
+  };
+
+  const handleCardClick = id => {
+    if (id) {
+      navigate(`/product/${id}`, { replace: true });
     }
   };
 
   return (
     <>
-      <ProductGridList list={products} isLoading={isLoading} />
+      <ProductGridList
+        list={products}
+        isLoading={isLoading}
+        handleCardClick={handleCardClick}
+      />
       <PaginationBar
         isLoading={isLoading}
         currentPage={currentPage}
