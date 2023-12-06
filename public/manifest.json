@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "E-Commerce",
+  "short_name": "Ecom",
+  "description": "Ecom web app ",
   "icons": [
     {
       "src": "favicon.ico",

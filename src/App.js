@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChakraProvider, Box, Grid, extendTheme } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './modules/components/shared/molecule/NavBar/ColorModeSwitcher';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Dashboard from './modules/pages/dashboard/Dashboard';
 import ProductDetail from './modules/pages/productDetail/ProductDetail';
 import Navbar from './modules/components/shared/molecule/NavBar/Navbar';
@@ -54,16 +54,14 @@ function Main() {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Router>
-        <ScrollToTop />
-        <Box textAlign="center" fontSize="xl">
-          <Navbar title="Ecom" />
-          <div style={{ padding: '100px 25px 60px 25px' }}>
-            {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
-            <Main />
-          </div>
-        </Box>
-      </Router>
+      <ScrollToTop />
+      <Box textAlign="center" fontSize="xl">
+        <Navbar title="Ecom" />
+        <div style={{ padding: '100px 25px 60px 25px' }}>
+          {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
+          <Main />
+        </div>
+      </Box>
     </ChakraProvider>
   );
 }
