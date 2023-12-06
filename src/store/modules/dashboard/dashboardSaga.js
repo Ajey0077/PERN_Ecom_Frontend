@@ -4,6 +4,7 @@ import { getProducts } from './dashboardService';
 import {
   setProducts,
   setSearchProducts,
+  setCurrentPage,
   setTotalPageCount,
   setIsLoading,
   setError,
@@ -16,6 +17,7 @@ function* fetchProducts(action) {
     const data = yield getProducts(action.payload);
 
     yield put(setProducts(data?.products));
+    yield put(setCurrentPage(data?.page));
     yield put(setTotalPageCount(data?.totalPages));
   } catch (error) {
     yield put(setError(error.message));

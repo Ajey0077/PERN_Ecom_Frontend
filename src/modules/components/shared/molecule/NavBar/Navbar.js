@@ -62,6 +62,10 @@ function Navbar({ title }) {
             cursor: 'pointer',
           }}
           onClick={() => {
+            dispatch({
+              type: `dashboard/fetchProducts`,
+              payload: { page: 1 },
+            });
             navigate(`/`, { replace: true });
           }}
         >
