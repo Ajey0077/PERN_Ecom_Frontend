@@ -28,7 +28,7 @@ function Navbar({ title }) {
   const fetchData = text => {
     dispatch({
       type: `dashboard/searchProducts`,
-      payload: { page: currentPage, searchText: text, filter: 'all' },
+      payload: { page: 1, searchText: text, filter: 'all' },
     });
   };
 
@@ -36,7 +36,7 @@ function Navbar({ title }) {
     onClose();
     dispatch({
       type: `dashboard/fetchProducts`,
-      payload: { page: currentPage, searchText: text, filter: 'all' },
+      payload: { page: 1, searchText: text, filter: 'all' },
     });
   };
 
