@@ -4,7 +4,6 @@ const urlsToCache = [
   '/index.html',
   // Add other static assets and HTML files
 ];
-console.log('public service worker');
 
 try {
   self.addEventListener('install', event => {

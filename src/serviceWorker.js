@@ -21,19 +21,10 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  console.log('🚀 ~ file: serviceWorker.js:24 ~ register ~ config:', config);
   try {
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
       // The URL constructor is available in all browsers that support SW.
       const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
-      console.log(
-        '🚀 ~ file: serviceWorker.js:27 ~ register ~ process.env.NODE_ENV:',
-        process.env.NODE_ENV,
-        process.env.PUBLIC_URL,
-        window.location.href,
-        publicUrl,
-        publicUrl.origin !== window.location.origin
-      );
       if (publicUrl.origin !== window.location.origin) {
         // Our service worker won't work if PUBLIC_URL is on a different origin
         // from what our page is served on. This might happen if a CDN is used to
